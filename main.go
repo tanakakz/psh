@@ -100,6 +100,9 @@ func getVszAndRssPos(headerline string) (vszpos int, rsspos int) {
 // ex: in 512 * 1024^1 byte, out "512Ki"
 // ex: in   2 * 1024^3 byte, out "2.0Gi"
 func fmtByte(rawbyte string) string {
+	if rawbyte == "0" {
+		return rawbyte
+	}
 	rawbi, _ := new(big.Int).SetString(rawbyte, 10)
 	var fmtint, fmtdec, fmtsuf string
 	switch {
